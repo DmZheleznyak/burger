@@ -4,7 +4,8 @@ import { updateObject } from '../utility'
 const initialState = {
 	ingredients: null, // because ingredients we fetch from server
 	totalPrice: 4,
-	error: false
+	error: false,
+	building: false
 }
 
 const INGREDIENT_PRICES = {
@@ -19,7 +20,8 @@ const addIngredient = (state, action) => {
 	const updateIngredients = updateObject( state.ingredients, updateIngredient )
 	const updateState = {
 		ingredients: updateIngredients,
-		totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+		totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+		building: true
 	}
 	return updateObject( state, updateState )
 }
@@ -29,7 +31,8 @@ const removeIngredient = ( state, action ) => {
 	const updateIngs = updateObject( state.ingredients, updateIng )
 	const updateSt = {
 		ingredients: updateIngs,
-		totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+		totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+		building: true
 	}
 	return updateObject( state, updateSt )
 }
@@ -43,7 +46,8 @@ const setIngredients = ( state, action ) => {
 			meat: action.ingredients.meat
 		},
 		totalPrice: 4,
-		error: false
+		error: false,
+		building: false
 		} 
 	)
 }
